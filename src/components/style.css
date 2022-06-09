@@ -1,14 +1,53 @@
 .board {
-    background-color: #e5e5e5;
-    margin: 10px;
+  background-color: #e5e5e5;
+  margin: 10px;
 }
 .top {
-    background-color: #7d1ecd;
-    border-radius: 5px;
-    margin: 10px;
+  background-color: #7d1ecd;
+  border-radius: 5px;
+  margin: 10px;
 }
 .list {
-    background-color: #ffffff;
-    border-radius: 5px;
-    margin: 10px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  margin: 10px;
 }
+.top_header {
+	display: flex;
+	justify-content: flex-start;
+	color: white;
+	margin-left: 25px;
+}
+.top_leaders{
+	display: flex;
+	justify-content: space-around;
+	height: 125px;
+}
+.top_leaders-img {
+	display: flex;
+	margin-top: -50px;
+}
+.list_header {
+	border-radius: 5px;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 25px;
+}
+.btn{
+	margin: 15px;
+	display: flex;
+	justify-content: space-between;
+}
+.newDay_Btn {
+	border-radius: 5px;
+	margin-left: 15px;
+	background-color: #d16c0d;
+}
+.addNewUserBtn {
+	border-radius: 5px;
+	margin-left: 15px;
+	background-color: #7d1ecd;
+}
+
