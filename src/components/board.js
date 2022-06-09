@@ -6,7 +6,7 @@ import '../components/style.css';
 export default function Board() {
   return (
     <div className='board'>
-      <h1>Cube19LeaderBoard</h1>
+      <h1>Cube<span className='board_header'>19</span>LeaderBoard</h1>
         <TopLeadersBoard />
         <ListOfUsers />
     </div>

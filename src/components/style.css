@@ -2,6 +2,9 @@
   background-color: #e5e5e5;
   margin: 10px;
 }
+.board_header{
+	color: #d16c0d;
+}
 .top {
   background-color: #7d1ecd;
   border-radius: 5px;
@@ -40,12 +43,20 @@
 	display: flex;
 	justify-content: space-between;
 }
-.newDay_Btn {
+.btn_Nav {
+	background-color: #ffffff;
+	border-radius: 5px;
+	margin-left: 5px;
+}
+.btn_Nav:hover {
+	background-color: #b8b4b4;
+}
+.btn_newDay {
 	border-radius: 5px;
 	margin-left: 15px;
 	background-color: #d16c0d;
 }
-.addNewUserBtn {
+.btn_addNewUser {
 	border-radius: 5px;
 	margin-left: 15px;
 	background-color: #7d1ecd;

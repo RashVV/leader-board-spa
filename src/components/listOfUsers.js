@@ -7,10 +7,10 @@ export default function listOfUsers() {
 			<div className='list_header'>
       <h2>Leaders table for this period</h2>
 			<div className='btn'>
-				<button>{'<<'}</button>
-				<button>{'>>'}</button>
-				<button className='newDay_Btn'>new day</button>
-				<button className='addNewUserBtn'>+ Add new user</button>
+				<button className='btn_Nav'>{'<<'}</button>
+				<button className='btn_Nav'>{'>>'}</button>
+				<button className='btn_newDay'>new day</button>
+				<button className='btn_addNewUser'>+ Add new user</button>
 			</div>
 			</div>
 			<div>
