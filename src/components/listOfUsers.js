@@ -1,5 +1,6 @@
 import React from 'react';
 import '../components/style.css';
+import ProfilesList from './profilesList';
 
 export default function listOfUsers() {
   return (
@@ -13,12 +14,13 @@ export default function listOfUsers() {
 				<button className='btn_addNewUser'>+ Add new user</button>
 			</div>
 			</div>
-			<div>
+			<ProfilesList></ProfilesList>
+			{/* <div>
 				<ul>1</ul>
 				<ul>2</ul>
 				<ul>3</ul>
 				<ul>4</ul>
-			</div>
+			</div> */}
     </div>
   )
 }

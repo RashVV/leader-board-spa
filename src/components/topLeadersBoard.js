@@ -6,7 +6,7 @@ export default function TopLeadersBoard() {
   return (
     <div className='top'>
 			<div className='top_header'>
-			<h2>All time Highest Scorers</h2>
+				<h2>All time Highest Scorers</h2>
 			</div>
 			<div className='top_leaders'>
 				<ul>1</ul>
