@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../components/style.css';
 import ProfilesList from './profilesList';
+import axios from 'axios';
 
 export default function listOfUsers() {
+	// eslint-disable-next-line react-hooks/rules-of-hooks
+	const [users, setUsers] = useState([])
+
+	const fetchUsers = () => {
+		axios.get('http://coding-test.cube19.io/frontend/v1/starting-state')
+	.then((resp) => setUsers(resp.data))
+	.catch(function (error) {
+		console.log(error);
+	  })
+	}
+	const sortedUsers = users.sort((a, b) => b?.score - a?.score);
+	console.log('users', users)
+	console.log('sortedUsers', sortedUsers)
   return (
     <div className='list'>
 			<div className='list_header'>
@@ -10,11 +24,11 @@ export default function listOfUsers() {
 			<div className='btn'>
 				<button className='btn_Nav'>{'<<'}</button>
 				<button className='btn_Nav'>{'>>'}</button>
-				<button className='btn_newDay'>new day</button>
+				<button className='btn_newDay' onClick={fetchUsers}>new day</button>
 				<button className='btn_addNewUser'>+ Add new user</button>
 			</div>
 			</div>
-			<ProfilesList></ProfilesList>
+			<ProfilesList sortedUsers={sortedUsers} fetchUsers={fetchUsers}></ProfilesList>
     </div>
   )
 }

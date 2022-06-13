@@ -1,32 +1,32 @@
-import React, {useState} from 'react';
+import React, { useEffect} from 'react';
 import '../components/style.css';
 import {FaPen} from 'react-icons/fa';
-import axios from 'axios';
 
 
-export default function ProfilesList() {
-	axios.get('http://coding-test.cube19.io/frontend/v1/starting-state')
-	.then((resp)=>setUsers(resp.data))
-	.catch(function (error) {
-		console.log(error);
-	  })
-	const [users, setUsers] = useState([])
 
+export default function ProfilesList( {fetchUsers, sortedUsers}) {
+
+	console.log('sortedUsers' ,sortedUsers);
+
+
+	useEffect(() => {
+		fetchUsers()
+	}, [])
 
 
   return (
     <ol id='profile'>
-        {item(users)}
+        {item(sortedUsers)}
     </ol>
   )
 }
 
-function item(users) {
+function item(sortedUsers) {
 
 	return (
 		<>
 		{
-			users.map((value,index) => (
+			sortedUsers?.map((value,index) => (
 				<li className='flex' key={index}>
 			<div className='item'>
 				<img src='../../public/logo192.png' alt='logo' />
