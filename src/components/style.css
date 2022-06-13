@@ -66,4 +66,13 @@
 	align-items: center;
 	justify-content: space-around;
 }
-
+.name {
+	text-transform: capitalize;
+}
+.item span:empty::after {
+	 content: "0";
+ }
+ ol li {
+  padding: 5px;
+  margin-left: 35px;
+}

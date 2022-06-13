@@ -15,12 +15,6 @@ export default function listOfUsers() {
 			</div>
 			</div>
 			<ProfilesList></ProfilesList>
-			{/* <div>
-				<ul>1</ul>
-				<ul>2</ul>
-				<ul>3</ul>
-				<ul>4</ul>
-			</div> */}
     </div>
   )
 }
