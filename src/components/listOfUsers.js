@@ -9,7 +9,7 @@ export default function listOfUsers() {
 
 	const fetchUsers = () => {
 		axios.get('http://coding-test.cube19.io/frontend/v1/starting-state')
-	.then((resp) => setUsers(resp.data))
+	.then((resp) => setUsers(resp.data.map((value, ) => value.score ? value : {score:0, ...value})))
 	.catch(function (error) {
 		console.log(error);
 	  })
