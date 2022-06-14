@@ -14,6 +14,7 @@ export default function listOfUsers() {
 		console.log(error);
 	  })
 	}
+
 	const sortedUsers = users.sort((a, b) => b?.score - a?.score);
 	console.log('users', users)
 	console.log('sortedUsers', sortedUsers)
