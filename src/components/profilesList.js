@@ -1,18 +1,15 @@
 import React, { useEffect} from 'react';
 import '../components/style.css';
+import UserImg from '../images/userImg.png'
 import {FaPen} from 'react-icons/fa';
-
-
 
 export default function ProfilesList( {fetchUsers, sortedUsers}) {
 
 	console.log('sortedUsers' ,sortedUsers);
 
-
 	useEffect(() => {
 		fetchUsers()
-	}, [])
-
+	}, [fetchUsers])
 
   return (
     <ol id='profile'>
@@ -22,14 +19,13 @@ export default function ProfilesList( {fetchUsers, sortedUsers}) {
 }
 
 function item(sortedUsers) {
-
 	return (
 		<>
 		{
 			sortedUsers?.map((value,index) => (
 				<li className='flex' key={index}>
 			<div className='item'>
-				<img src='../../public/logo192.png' alt='logo' />
+				<img src={UserImg} alt='logo' className='images' />
 				 <div className='item'>
 					<span>{value.score}</span>
 				 </div>
