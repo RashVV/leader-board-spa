@@ -1,24 +1,26 @@
-import React, { useEffect} from 'react';
-import '../components/style.css';
+import React, { useEffect, useState} from 'react';
+import '../components/ProfilesList.css';
 import UserImg from '../images/userImg.png'
 import {FaPen} from 'react-icons/fa';
+import Modal from './Modal';
 
 export default function ProfilesList( {fetchUsers, sortedUsers}) {
-
-	console.log('sortedUsers' ,sortedUsers);
+  const [modalActive, setModalActive] = useState(true)
 
 	useEffect(() => {
 		fetchUsers()
 	}, [fetchUsers])
 
   return (
-    <ol id='profile'>
-        {item(sortedUsers)}
+    <><ol id='profile'>
+      {item(sortedUsers, setModalActive)}
+	  <Modal active={modalActive} setActive={setModalActive} />
     </ol>
+    </>
   )
 }
 
-function item(sortedUsers) {
+function item(sortedUsers, setModalActive) {
 	return (
 		<>
 		{
@@ -36,7 +38,7 @@ function item(sortedUsers) {
 					<div>Place</div>
 				</div>
 				<div>
-					<button>
+					<button onClick={() => setModalActive(true)}>
 						<FaPen/>
 					</button>
 				</div>
@@ -44,6 +46,7 @@ function item(sortedUsers) {
 		</li>
 		))
 		}
+
 		</>
 	)
 }

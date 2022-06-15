@@ -1,6 +1,6 @@
 import React from 'react';
 import Layer from '../topBg.svg';
-import '../components/style.css';
+import '../components/TopLeadersBoard.css';
 
 export default function TopLeadersBoard() {
   return (

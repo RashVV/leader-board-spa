@@ -1,0 +1,36 @@
+.list {
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin: 10px;
+  }
+.list_header {
+	border-radius: 5px;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 25px;
+}
+.btn{
+	margin: 15px;
+	display: flex;
+	justify-content: space-between;
+}
+.btn_Nav {
+	background-color: #ffffff;
+	border-radius: 5px;
+	margin-left: 5px;
+}
+.btn_Nav:hover {
+	background-color: #b8b4b4;
+}
+.btn_newDay {
+	border-radius: 5px;
+	margin-left: 15px;
+	background-color: #d16c0d;
+}
+.btn_addNewUser {
+	border-radius: 5px;
+	margin-left: 15px;
+	background-color: #7d1ecd;
+}

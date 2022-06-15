@@ -1,0 +1,19 @@
+.item {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.name {
+	text-transform: capitalize;
+}
+ ol li {
+  padding: 5px;
+  margin-left: 35px;
+}
+span {
+	font-weight: bold;
+}
+ol img {
+	border: 1px solid #0a0a0a;
+	border-radius: 8px;
+}

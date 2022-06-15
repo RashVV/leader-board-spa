@@ -1,7 +1,7 @@
 import React from 'react';
-import TopLeadersBoard from './topLeadersBoard';
-import ListOfUsers from './listOfUsers';
-import '../components/style.css';
+import TopLeadersBoard from './TopLeadersBoard';
+import ListOfUsers from './ListOfUsers';
+import '../components/Board.css';
 
 export default function Board() {
   return (

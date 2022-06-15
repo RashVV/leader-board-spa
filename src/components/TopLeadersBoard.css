@@ -1,0 +1,20 @@
+.top {
+    background-color: #7d1ecd;
+    border-radius: 5px;
+    margin: 10px;
+  }
+  .top_header {
+      display: flex;
+      justify-content: flex-start;
+      color: white;
+      margin-left: 25px;
+  }
+  .top_leaders{
+      display: flex;
+      justify-content: space-around;
+      height: 125px;
+  }
+  .top_leaders-img {
+      display: flex;
+      margin-top: -50px;
+  }

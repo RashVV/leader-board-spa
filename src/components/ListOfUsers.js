@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import '../components/style.css';
-import ProfilesList from './profilesList';
+import '../components/ListOfUsers.css';
+import ProfilesList from './ProfilesList';
 import axios from 'axios';
 
-export default function listOfUsers() {
-	// eslint-disable-next-line react-hooks/rules-of-hooks
+export default function ListOfUsers() {
+
 	const [users, setUsers] = useState([])
 
 	const fetchUsers = () => {
@@ -16,8 +16,7 @@ export default function listOfUsers() {
 	}
 
 	const sortedUsers = users.sort((a, b) => b?.score - a?.score);
-	console.log('users', users)
-	console.log('sortedUsers', sortedUsers)
+
   return (
     <div className='list'>
 			<div className='list_header'>
