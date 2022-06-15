@@ -17,3 +17,25 @@ ol img {
 	border: 1px solid #0a0a0a;
 	border-radius: 8px;
 }
+.modal_header {
+  font-weight: bold;
+	font-size: large;
+  color: black;
+  position: absolute;
+  top: 10vw;
+	left: 12vw;
+}
+.modal_nameUser {
+	margin: 2vw;
+	border: 1px solid #0a0a0a;
+	text-transform: capitalize;
+	font-weight: bold;
+	font-size: large;
+  color: black;
+	padding-bottom: 5%;
+}
+.modal_score {
+	margin-top: 0;
+	margin-bottom: 15px;
+	/* margin: 5vw; */
+}

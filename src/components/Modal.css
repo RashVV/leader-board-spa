@@ -1,6 +1,6 @@
 .modal {
-    height: 100vh;
-    width: 100vh;
+    height: 75vh;
+    width: 75vh;
     background-color: #e5e5e5;
     border-radius: 12px;
     position: fixed;
@@ -10,33 +10,32 @@
     align-items: center;
     justify-content: center;
     opacity: 0;
+    /* pointer-events: none; */
+    transition: 0.5s;
 }
-.modal.active {
-    height: 100vh;
-    width: 100vh;
+.modal_active {
+    height: 50vh;
+    width: 50vh;
     opacity: 1;
     background-color: #e5e5e5;
     border-radius: 12px;
     position: fixed;
-    top: 150px;
+    top: 250px;
     left: 350px;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.5s;
 }
 .modal_close {
     border-radius: 5px;
-    /* position: absolute;
-    left: 96vh;
-    top: 9px; */
+    position: absolute;
+    left: 47vh;
+    top: 9px;
 }
-.modal_header {
-    font-weight: bold;
-    color: black;
-}
+
 .modal_content {
     padding: 20px;
     border-radius: 12px;
-    height: 200px;
-    width: 400px;
+    width: 50vw;
 }
