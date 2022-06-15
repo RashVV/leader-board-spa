@@ -5,7 +5,7 @@ import {FaPen} from 'react-icons/fa';
 import Modal from './Modal';
 
 export default function ProfilesList( {fetchUsers, sortedUsers}) {
-  const [modalActive, setModalActive] = useState(true)
+  const [modalActive, setModalActive] = useState(false)
 
 	useEffect(() => {
 		fetchUsers()
@@ -46,7 +46,6 @@ function item(sortedUsers, setModalActive) {
 		</li>
 		))
 		}
-
 		</>
 	)
 }
