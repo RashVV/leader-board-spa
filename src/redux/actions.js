@@ -6,7 +6,7 @@ export const fetchUsersAction = () => {
 		try {
 			let response = await axios.get('http://coding-test.cube19.io/frontend/v1/starting-state');
 		response && dispatch({ type: FETCH_USERS, payload: response.data.map((value, ) => value.score ? value : { ...value, score:0 })});
-	} catch (e) {
+	} catch (e) { axios.get('http://coding-test.cube19.io/frontend/v1/starting-state') &&
 	console.warn(e);
 	}
 };
