@@ -7,13 +7,13 @@ import { fetchUsersAction } from '../redux/actions';
 
 export default function ListOfUsers() {
 	const dispatch = useDispatch();
-	const usersFromApi = useSelector((state) => state.usersHistoryScoreReducer)
-	const [users, setUsers] = useState(Array.from(usersFromApi))
+	const usersFromApi = useSelector((state) => state.usersHistoryReducer)
+	const [users, setUsers] = useState(usersFromApi)
 
 	useEffect(() => {
 		dispatch(fetchUsersAction());
-		setUsers(users);
-	  }, [dispatch, users]);
+		setUsers(usersFromApi);
+	  }, [dispatch, usersFromApi]);
 
   return (
     <div className='list'>

@@ -1,11 +1,10 @@
 import { FETCH_USERS } from '../actionType';
 
 const initialState = {
-    day: 1,
-    results: []
+
 };
 
-const usersHistoryScoreReducer = (state = initialState, action) => {
+const usersHistoryReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_USERS:
             return {
@@ -17,4 +16,4 @@ const usersHistoryScoreReducer = (state = initialState, action) => {
     }
 }
 
-export default usersHistoryScoreReducer;
+export default usersHistoryReducer;
