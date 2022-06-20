@@ -19,9 +19,12 @@ export default function ProfilesList( {users}) {
 		}))
 	}
 
-	const onSubmit = (e) => {
+	const onSubmit = (e, score) => {
 		e.preventDefault()
-		debugger
+		setUser(prevState => ({
+			...prevState,
+			score
+		}))
 	}
 
 	return (
@@ -32,7 +35,7 @@ export default function ProfilesList( {users}) {
 		<Modal active={modalActive} setActive={setModalActive}>
 				<legend className='modal_header'> Edit user score </legend>
 				<input className='modal_nameUser' disabled value={user.name} type='text' label='Enter User Name' />
-				<input className='modal_score' onChange={e => onChange(e.target.value)}  value={user.score} type='number' />
+				<input className='modal_score' onChange={e => onChange(e.target.value)}  type='number' />
 				<br />
 				<input onClick={onSubmit} type="submit" value="Save"></input>
 		</Modal>
