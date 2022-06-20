@@ -12,13 +12,13 @@ export default function Board() {
 
   useEffect(() => {
     	dispatch(fetchUsersAction());
-      }, []);
+      }, [dispatch]);
 
       useEffect(() => {
         setUsers(data);
-        }, [!load]);
+        }, [data, dispatch]);
 
-  return !load ? (
+  return !load && users.length ? (
     <div className='board'>
       <h1>Cube<span className='board_header'>19</span>LeaderBoard</h1>
         <TopLeadersBoard users={users}  />

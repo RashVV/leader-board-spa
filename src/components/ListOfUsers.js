@@ -2,9 +2,7 @@ import React from 'react';
 import '../components/ListOfUsers.css';
 import ProfilesList from './ProfilesList';
 
-
 export default function ListOfUsers({users}) {
-
 
   return (
     <div className='list'>
@@ -17,7 +15,7 @@ export default function ListOfUsers({users}) {
 				<button className='btn_addNewUser'>+ Add new user</button>
 			</div>
 			</div>
-			<ProfilesList></ProfilesList>
+		<ProfilesList users={users}></ProfilesList>
     </div>
   )
 }
