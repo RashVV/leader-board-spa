@@ -1,15 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import Layer from '../topBg.svg';
 import userImg  from '../images/userImg.png'
 import '../components/TopLeadersBoard.css';
 
-export default function TopLeadersBoard() {
-	const usersFromApi = useSelector((state) => state.usersHistoryReducer)
-	const firstPlace = usersFromApi[Object.keys(usersFromApi)[0]]? usersFromApi[Object.keys(usersFromApi)[0]] : "1st Place";
-	const secondPlace = usersFromApi[Object.keys(usersFromApi)[1]]? usersFromApi[Object.keys(usersFromApi)[1]] : "2nd Place";
-	const thirdPlace = usersFromApi[Object.keys(usersFromApi)[2]]? usersFromApi[Object.keys(usersFromApi)[2]] : "3rd Place";
-	const fourthPlace = usersFromApi[Object.keys(usersFromApi)[3]]? usersFromApi[Object.keys(usersFromApi)[3]] : "4th Place";
+export default function TopLeadersBoard({users}) {
+	const firstPlace = users[Object.keys(users)[0]]? users[Object.keys(users)[0]] : "1st Place";
+	const secondPlace = users[Object.keys(users)[1]]? users[Object.keys(users)[1]] : "2nd Place";
+	const thirdPlace = users[Object.keys(users)[2]]? users[Object.keys(users)[2]] : "3rd Place";
+	const fourthPlace = users[Object.keys(users)[3]]? users[Object.keys(users)[3]] : "4th Place";
 
   return (
     <div className='top'>

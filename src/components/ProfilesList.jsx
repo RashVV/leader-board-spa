@@ -6,35 +6,31 @@ import {FaPen} from 'react-icons/fa';
 import Modal from './Modal';
 
 export default function ProfilesList( {sortedUsers, fetchUsers}) {
-  const [modalActive, setModalActive] = useState(false)
+  	const [modalActive, setModalActive] = useState(false)
 	const usersFromApi = useSelector((state) => state.usersHistoryReducer)
 	console.log(usersFromApi);
-	useEffect(() => {
-		fetchUsers()
-	}, [fetchUsers])
 
-  return (
-    <>
 
-	<ol id='profile'>
-      {item(usersFromApi, modalActive, setModalActive)}
-	</ol>
-    </>
-  )
+	return (
+		<>
+		<ol id='profile'>
+		{item(usersFromApi, modalActive, setModalActive)}
+		</ol>
+		</>
+	)
 }
 
 function item( usersFromApi, modalActive, setModalActive) {
-	return (
-
-		{ list = Array.from(usersFromApi)?.map((value, index) => (
-	<><li className='flex'>
+	return !usersFromApi.load ? (usersFromApi.data.map((value, index) => (
+		<>
+			<li className='flex'>
 				<div className='item'>
 					<img src={UserImg} alt='logo' className='images' />
 					<div className='item'>
-						<span>{usersFromApi.score}</span>
+						<span>{value.score}</span>
 					</div>
 					<div>
-						<h3 className='name'>{usersFromApi.name}</h3>
+						<h3 className='name'>{value.name}</h3>
 					</div>
 					<div className='place'>
 						<div>Place</div>
@@ -46,7 +42,7 @@ function item( usersFromApi, modalActive, setModalActive) {
 					</div>
 				</div>
 			</li>
-			<></><Modal active={modalActive} setActive={setModalActive}>
+			<Modal active={modalActive} setActive={setModalActive}>
 					<form action=''>
 						<legend className='modal_header'> Edit user score </legend>
 						<input className='modal_nameUser' type='text' label='Enter User Name' />
@@ -54,9 +50,9 @@ function item( usersFromApi, modalActive, setModalActive) {
 						<br />
 						<input type="submit" value="Save"></input>
 					</form>
-				</Modal></>
-				)
-	}
+				</Modal>
 
+		</>
+	)) ): null
 
-
+		}
