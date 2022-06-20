@@ -4,7 +4,6 @@ const takenUsersSlice = createSlice({
   name: 'takenUsers',
   initialState:{
     takenUsers: {
-      day: 1,
       results: [],
     },
   },

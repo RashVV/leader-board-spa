@@ -4,7 +4,7 @@ import UserImg from '../images/userImg.png'
 import {FaPen} from 'react-icons/fa';
 import Modal from './Modal';
 
-export default function ProfilesList( {fetchUsers, sortedUsers}) {
+export default function ProfilesList( {sortedUsers, fetchUsers}) {
   const [modalActive, setModalActive] = useState(false)
 
 	useEffect(() => {
@@ -16,8 +16,7 @@ export default function ProfilesList( {fetchUsers, sortedUsers}) {
 
 	<ol id='profile'>
       {item(sortedUsers, modalActive, setModalActive)}
-
-    </ol>
+	</ol>
     </>
   )
 }
@@ -26,7 +25,7 @@ function item(sortedUsers, modalActive, setModalActive) {
 	return (
 		<>
 		{
-			sortedUsers?.map((value,index) => (
+			Array.from(sortedUsers)?.map((value,index) => (
 				<>
 				<Modal active={modalActive} setActive={setModalActive} key={index}>
 						<form action=''>

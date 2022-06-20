@@ -5,9 +5,9 @@ export const fetchUsersAction = () => {
 	return async (dispatch) => {
 		try {
 			let response = await axios.get('http://coding-test.cube19.io/frontend/v1/starting-state');
-		response && dispatch({ type: FETCH_USERS, payload: response.data.map((value, ) => value.score ? value : { ...value, score:0 })});
+		response && dispatch({ type: FETCH_USERS, payload: response.data.map((value, ) => value.score ? value : { ...value, score:0 }).sort((a, b) => b?.score - a?.score)});
 	} catch (e) {
-	console.warn(e);
+	console.warn(e) && axios.get('http://coding-test.cube19.io/frontend/v1/starting-state');
 	}
 };
 };
