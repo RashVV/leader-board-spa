@@ -4,7 +4,6 @@ import '../components/ListOfUsers.css';
 import ProfilesList from './ProfilesList';
 import { fetchUsersAction } from '../redux/actions';
 
-
 export default function ListOfUsers() {
 	const dispatch = useDispatch();
 	const usersFromApi = useSelector((state) => state.usersHistoryScoreReducer)

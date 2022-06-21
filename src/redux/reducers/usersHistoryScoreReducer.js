@@ -1,8 +1,7 @@
 import { FETCH_USERS } from '../actionType';
 
 const initialState = {
-    day: 1,
-    results: []
+   results: []
 };
 
 const usersHistoryScoreReducer = (state = initialState, action) => {
