@@ -16,11 +16,11 @@ export const fetchUsersAction = () => {
 };
 
 export const editUserScore = user => ({
-    type: EDIT_USER_SCORE,
-    payload: user.score
+  type: EDIT_USER_SCORE,
+  payload: user.score
 })
 
 export const addNewUser = () => ({
-    type: ADD_NEW_USER,
-    payload: ''
+  type: ADD_NEW_USER,
+  payload: ''
 })

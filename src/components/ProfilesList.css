@@ -26,6 +26,7 @@ ol img {
   left: 8vw;
 }
 .modal_nameUser {
+  box-shadow: 5px 10px;
   margin: 2vw;
   border: 1px solid #0a0a0a;
   text-transform: capitalize;
@@ -35,6 +36,7 @@ ol img {
   padding-bottom: 5%;
 }
 .modal_score {
+  box-shadow: 3px 10px;
   margin-top: 0;
   margin-bottom: 15px;
 }
