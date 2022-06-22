@@ -15,7 +15,7 @@ const usersChangeReducer = (state = initialState, action) => {
             }
         case EDIT_USER_SCORE:
             return {
-                ...state,
+                ...state.score,
                 ...action.payload
             }
 
