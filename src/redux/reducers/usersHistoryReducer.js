@@ -1,4 +1,4 @@
-import { FETCH_USERS } from '../actionType';
+import { FETCH_USERS, ADD_NEW_USER, EDIT_USER_SCORE } from '../actionType';
 
 const initialState = {
     data: [],
@@ -13,6 +13,16 @@ const usersHistoryReducer = (state = initialState, action) => {
                 ...state,
                 data: action.payload,
                 load: false
+            }
+        case ADD_NEW_USER:
+            return {
+                ...state,
+                ...action.payload
+            }
+        case EDIT_USER_SCORE:
+            return {
+                ...state.score,
+                ...action.payload
             }
         default:
             return state;
