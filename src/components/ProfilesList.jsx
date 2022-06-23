@@ -21,6 +21,7 @@ export default function ProfilesList( { users }) {
 
 	const onSubmit = (e, score) => {
 		e.preventDefault()
+    setModalActive(false)
 		setUser(prevState => ({
 			...prevState,
 			score

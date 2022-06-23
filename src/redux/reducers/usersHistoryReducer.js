@@ -17,7 +17,7 @@ const usersHistoryReducer = (state = initialState, action) => {
         case ADD_NEW_USER:
             return {
                 ...state,
-                data: action.payload,
+                data: state.data + action.payload,
                 load: false
             }
         case EDIT_USER_SCORE:

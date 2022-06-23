@@ -17,8 +17,8 @@ export default function ListOfUsers({ users }) {
 
 	const onSubmit = (e, user) => {
 		e.preventDefault()
-    dispatch({type: ADD_NEW_USER, payload: user })
-
+    setModalActive(false);
+    dispatch({type: ADD_NEW_USER, payload: this.state.data });
 		}
 
 
