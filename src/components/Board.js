@@ -13,11 +13,11 @@ export default function Board() {
     	dispatch(fetchUsersAction());
       }, [dispatch]);
 
-  return !load && data.length ? (
+  return !load && data?.length ? (
     <div className='board'>
       <h1>Cube<span className='board_header'>19</span>LeaderBoard</h1>
         <TopLeadersBoard users={data}  />
         <ListOfUsers users={data} />
     </div>
-    ) : (<p>load...</p>)
+    ) : (<p>load...</p> )
 }

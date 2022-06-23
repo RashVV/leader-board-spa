@@ -20,7 +20,8 @@ export const editUserScore = user => ({
   payload: user.score
 })
 
-export const addNewUser = () => ({
-  type: ADD_NEW_USER,
-  payload: ''
-})
+export const addNewUser = ({user}) =>  ({
+    type: ADD_NEW_USER,
+    payload: user
+  })
+

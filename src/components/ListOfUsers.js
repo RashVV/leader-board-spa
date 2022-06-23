@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import '../components/ListOfUsers.css';
 import ProfilesList from './ProfilesList';
+import { ADD_NEW_USER } from '../redux/actionType';
 import Modal from './Modal';
 
 export default function ListOfUsers({ users }) {
+  const dispatch = useDispatch();
 	const [modalActive, setModalActive] = useState(false)
 	const [user, setUser] = useState({});
 
@@ -12,21 +15,12 @@ export default function ListOfUsers({ users }) {
 		setModalActive(true)
 	}
 
-
-	const onChange = (score) => {
-		setUser(prevState => ({
-			...prevState,
-			score
-		}))
-	}
-
-	const onSubmit = (e, score) => {
+	const onSubmit = (e, user) => {
 		e.preventDefault()
-		setUser(prevState => ({
-			...prevState,
-			score
-		}))
-	}
+    dispatch({type: ADD_NEW_USER, payload: user })
+
+		}
+
 
 return (
 	<div className='list'>
@@ -40,9 +34,9 @@ return (
 			</div>
 				<Modal active={ modalActive } setActive={ setModalActive }>
 					<legend className='modal_header'> Add new user score </legend>
-					<input className='modal_nameUser'  type='text' label='Enter User Name' />
+					<input className='modal_nameUser'  type='text' />
 					<br />
-					<input className='modal_score' onChange={ e => onChange(e.target.value) } type='number' />
+					<input className='modal_score'  type='number' />
 					<br />
 					<input onClick={ onSubmit } type="submit" value="Save"></input>
 				</Modal>

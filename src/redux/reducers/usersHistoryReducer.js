@@ -17,11 +17,12 @@ const usersHistoryReducer = (state = initialState, action) => {
         case ADD_NEW_USER:
             return {
                 ...state,
-                ...action.payload
+                data: action.payload,
+                load: false
             }
         case EDIT_USER_SCORE:
             return {
-                ...state.score,
+                ...state.data,
                 ...action.payload
             }
         default:
