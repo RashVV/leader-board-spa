@@ -7,11 +7,11 @@ import { fetchUsersAction } from '../redux/actions';
 
 export default function Board() {
   const dispatch = useDispatch();
-  const {data, load} = useSelector((state) => state.usersHistoryReducer)
+  const {data, load, error} = useSelector((state) => state.usersHistoryReducer)
 
   useEffect(() => {
     	dispatch(fetchUsersAction());
-      }, [dispatch]);
+      }, [dispatch, error]);
 
   return !load && data?.length ? (
     <div className='board'>

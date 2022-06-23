@@ -8,18 +8,35 @@ import Modal from './Modal';
 export default function ListOfUsers({ users }) {
   const dispatch = useDispatch();
 	const [modalActive, setModalActive] = useState(false)
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState({
+    name: '',
+    score: 0
+  });
 
 	const onEdit = (user) => {
-		setUser(user)
+		setUser({
+      name: '',
+      score: ''
+    })
 		setModalActive(true)
 	}
 
-	const onSubmit = (e, user) => {
-		e.preventDefault()
+  const onChange = (key, value) => {
+		setUser(prevState => ({
+			...prevState,
+			[key]: isNaN(value) ? value : +value
+		}))
+	}
+
+
+	const onSubmit = (e) => {
+    setUser({})
     setModalActive(false);
-    dispatch({type: ADD_NEW_USER, payload: this.state.data });
-		}
+    dispatch({type: ADD_NEW_USER, payload: user });
+
+		e.preventDefault()
+
+	}
 
 
 return (
@@ -30,13 +47,13 @@ return (
 				<button className='btn_Nav' >{ '<<' }</button>
 				<button className='btn_Nav' disabled >{ '>>' }</button>
 				<button className='btn_newDay' >new day</button>
-				<button className='btn_addNewUser'  onClick={ (e) => onEdit(user) }>+ Add new user</button>
+				<button className='btn_addNewUser'  onClick={onEdit}>+ Add new user</button>
 			</div>
 				<Modal active={ modalActive } setActive={ setModalActive }>
 					<legend className='modal_header'> Add new user score </legend>
-					<input className='modal_nameUser'  type='text' />
+					<input className='modal_nameUser' name='name' value={user.name}  type='text' onChange={ e => onChange('name', e.target.value) } />
 					<br />
-					<input className='modal_score'  type='number' />
+					<input className='modal_score' name='score' value={user.score} type='number' onChange={ e => onChange('score', e.target.value) }  />
 					<br />
 					<input onClick={ onSubmit } type="submit" value="Save"></input>
 				</Modal>

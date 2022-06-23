@@ -1,4 +1,4 @@
-import { EDIT_USER_SCORE, ADD_NEW_USER, FETCH_USERS } from './actionType';
+import { EDIT_USER_SCORE, ADD_NEW_USER, FETCH_USERS, FETCH_FAILED } from './actionType';
 import axios from 'axios';
 
 export const fetchUsersAction = () => {
@@ -10,7 +10,7 @@ export const fetchUsersAction = () => {
 		    dispatch({ type: FETCH_USERS, payload });
 	} catch (e) {
 		console.warn(e)
-		dispatch({ type: FETCH_USERS, payload: [], error: e });
+		dispatch({ type: FETCH_FAILED,  payload: [], error: e });
 	}
 };
 };
