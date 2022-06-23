@@ -19,15 +19,19 @@
   margin-top: -50px;
 }
 .top_leaders--block {
-  display: flex;
-  align-items: flex-end;
+  list-style: none;
+}
+.top_leaders--img {
+  height: 102px;
 }
 .top_leaders--block-title {
   position: absolute;
   text-transform: capitalize;
+  margin-top: -95px;
 }
 .top_leaders--block-score {
   position: absolute;
   padding-left: 36px;
+  margin-top: -55px;
 }
 
