@@ -10,9 +10,9 @@ const usersHistoryReducer = (state = initialState, action) => {
     switch (action.type) {
 
       case FETCH_USERS:
-        return {
+      return {
           ...state,
-          participants: action.payload,
+          participants: [...state.participants, action.payload],
           load: false,
           error: null
         }

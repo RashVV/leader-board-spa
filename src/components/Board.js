@@ -16,8 +16,8 @@ export default function Board() {
   return !load && participants?.length ? (
     <div className='board'>
       <h1>Cube<span className='board_header'>19</span>LeaderBoard</h1>
-        <TopLeadersBoard users={participants}  />
-        <ListOfUsers users={participants} />
+        <TopLeadersBoard users={participants[0]}  />
+        <ListOfUsers users={participants[0]} />
     </div>
     ) : (<p>load...</p> )
 }

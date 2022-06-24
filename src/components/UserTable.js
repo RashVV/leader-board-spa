@@ -3,7 +3,6 @@ import './UserTable.css';
 import UserImg from '../images/userImg.png';
 import { FaPen } from 'react-icons/fa';
 
-
 export default function UserTable( users, modalActive, onEdit) {
 
 	return (

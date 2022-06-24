@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, /*useSelector */} from 'react-redux';
 import '../components/ListOfUsers.css';
 import ProfilesList from './ProfilesList';
 import { ADDED_NEW_USER } from '../redux/actionType';
@@ -8,6 +8,8 @@ import Modal from './Modal';
 export default function ListOfUsers({ users }) {
   const dispatch = useDispatch();
 	const [modalActive, setModalActive] = useState(false)
+  //const { participants, } = useSelector((state) => state.usersHistoryReducer);
+  //const participants[1]
 	const [user, setUser] = useState({
     name: '',
     score: 0
@@ -21,6 +23,11 @@ export default function ListOfUsers({ users }) {
 		setModalActive(true)
 	}
 
+  // const onSwitch = () => {
+  //   debugger
+  //   ;
+  // }
+
   const onChange = (key, value) => {
 		setUser(prevState => ({
 			...prevState,
@@ -32,9 +39,7 @@ export default function ListOfUsers({ users }) {
     setUser({})
     setModalActive(false);
     dispatch({type: ADDED_NEW_USER, payload: user });
-
 		e.preventDefault()
-
 	}
 
 return (
@@ -42,7 +47,7 @@ return (
 		<div className='list_header'>
 		<h2>Leaders table for this period</h2>
 			<div className='btn'>
-				<button className='btn_Nav' >{ '<<' }</button>
+				<button className='btn_Nav' /*onClick={ onSwitch }*/ >{ '<<' }</button>
 				<button className='btn_Nav' disabled >{ '>>' }</button>
 				<button className='btn_newDay' >new day</button>
 				<button className='btn_addNewUser'  onClick={onEdit}>+ Add new user</button>
