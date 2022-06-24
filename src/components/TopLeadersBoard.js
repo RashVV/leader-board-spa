@@ -25,9 +25,9 @@ export default function TopLeadersBoard({users}) {
 				        </div>
 				    </li>
 			    ))}
-		  <div className='top_leaders-img'>
-			  <img src={Layer} alt='board' />
-		  </div>
+          <div className='top_leaders-img'>
+            <img src={Layer} alt='board' />
+          </div>
 		    </ul>
     </div>
   )

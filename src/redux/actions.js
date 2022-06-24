@@ -8,11 +8,11 @@ export const fetchUsersAction = () => {
 			const payload = response.data.map((value, ) => value.score ? value : { ...value, score:0 }).sort((a, b) => b?.score - a?.score)
 
 		    dispatch({ type: FETCH_USERS, payload });
-	} catch (e) {
-		console.warn(e)
-		dispatch({ type: FETCH_FAILED,  payload: [], error: e });
-	}
-};
+	  } catch (e) {
+		  console.warn(e)
+		  dispatch({ type: FETCH_FAILED,  payload: [], error: e });
+	    }
+  };
 };
 
 export const editUserScore = user => ({
