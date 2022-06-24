@@ -4,7 +4,9 @@ import userImg  from '../images/userImg.png'
 import '../components/TopLeadersBoard.css';
 
 export default function TopLeadersBoard({users}) {
-  const topUsers = users.slice(0, 4);
+
+  const topUsers = users[0].slice(0, 4);
+  
 
   return (
     <div className='top'>
