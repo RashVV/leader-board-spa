@@ -11,7 +11,7 @@ export default function Board() {
 
   useEffect(() => {
     	dispatch(fetchUsersAction());
-      }, [dispatch, error]);
+      }, [error]);
 
   return !load && participants?.length ? (
     <div className='board'>

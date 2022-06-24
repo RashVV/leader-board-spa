@@ -2,6 +2,7 @@ import { FETCH_USERS, ADDED_NEW_USER, EDITED_USER_SCORE, FETCH_FAILED } from '..
 
 const initialState = {
     participants: [],
+    currentDay: 0,
     load: true,
     error: null,
 };
@@ -13,6 +14,7 @@ const usersHistoryReducer = (state = initialState, action) => {
       return {
           ...state,
           participants: [...state.participants, action.payload],
+          //currentDay:
           load: false,
           error: null
         }

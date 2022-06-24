@@ -4,6 +4,7 @@ import '../components/ListOfUsers.css';
 import ProfilesList from './ProfilesList';
 import { ADDED_NEW_USER } from '../redux/actionType';
 import Modal from './Modal';
+import { fetchUsersAction } from '../redux/actions';
 
 export default function ListOfUsers({ users }) {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ return (
 		<h2>Leaders table for this period</h2>
 			<div className='btn'>
 				<button className='btn_Nav' /*onClick={ onSwitch }*/ >{ '<<' }</button>
-				<button className='btn_Nav' disabled >{ '>>' }</button>
+				<button className='btn_Nav' onClick={()=> dispatch(fetchUsersAction())}  >{ '>>' }</button>
 				<button className='btn_newDay' >new day</button>
 				<button className='btn_addNewUser'  onClick={onEdit}>+ Add new user</button>
 			</div>
