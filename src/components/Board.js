@@ -7,17 +7,17 @@ import { fetchUsersAction } from '../redux/actions';
 
 export default function Board() {
   const dispatch = useDispatch();
-  const {data, load, error} = useSelector((state) => state.usersHistoryReducer)
+  const {participants, load, error} = useSelector((state) => state.usersHistoryReducer)
 
   useEffect(() => {
     	dispatch(fetchUsersAction());
       }, [dispatch, error]);
 
-  return !load && data?.length ? (
+  return !load && participants?.length ? (
     <div className='board'>
       <h1>Cube<span className='board_header'>19</span>LeaderBoard</h1>
-        <TopLeadersBoard users={data}  />
-        <ListOfUsers users={data} />
+        <TopLeadersBoard users={participants}  />
+        <ListOfUsers users={participants} />
     </div>
     ) : (<p>load...</p> )
 }

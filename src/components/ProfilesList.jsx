@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import '../components/ProfilesList.css';
 import UserTable from './UserTable';
-import {EDIT_USER_SCORE} from '../redux/actionType';
+import {EDITED_USER_SCORE} from '../redux/actionType';
 import Modal from './Modal';
 
 export default function ProfilesList( { users }) {
@@ -25,7 +25,7 @@ export default function ProfilesList( { users }) {
 	const onSubmit = (e) => {
 		e.preventDefault()
     setModalActive(false)
-    dispatch({type: EDIT_USER_SCORE, payload: user });
+    dispatch({type: EDITED_USER_SCORE, payload: user });
 	}
 
 	return (

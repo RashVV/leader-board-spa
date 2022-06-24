@@ -1,6 +1,6 @@
-export const EDIT_USER_SCORE = 'EDIT_USER_SCORE';
+export const EDITED_USER_SCORE = 'EDITED_USER_SCORE';
 
-export const ADD_NEW_USER = 'ADD_NEW_USER';
+export const ADDED_NEW_USER = 'ADDED_NEW_USER';
 
 export const FETCH_USERS = 'FETCH_USERS';
 

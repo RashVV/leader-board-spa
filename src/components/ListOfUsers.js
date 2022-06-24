@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import '../components/ListOfUsers.css';
 import ProfilesList from './ProfilesList';
-import { ADD_NEW_USER } from '../redux/actionType';
+import { ADDED_NEW_USER } from '../redux/actionType';
 import Modal from './Modal';
 
 export default function ListOfUsers({ users }) {
@@ -31,7 +31,7 @@ export default function ListOfUsers({ users }) {
 	const onSubmit = (e) => {
     setUser({})
     setModalActive(false);
-    dispatch({type: ADD_NEW_USER, payload: user });
+    dispatch({type: ADDED_NEW_USER, payload: user });
 
 		e.preventDefault()
 

@@ -1,4 +1,4 @@
-import { EDIT_USER_SCORE, ADD_NEW_USER, FETCH_USERS, FETCH_FAILED } from './actionType';
+import { EDITED_USER_SCORE, ADDED_NEW_USER, FETCH_USERS, FETCH_FAILED } from './actionType';
 import axios from 'axios';
 
 export const fetchUsersAction = () => {
@@ -16,12 +16,12 @@ export const fetchUsersAction = () => {
 };
 
 export const editUserScore = user => ({
-  type: EDIT_USER_SCORE,
+  type: EDITED_USER_SCORE,
   payload: user.score
 })
 
 export const addNewUser = ({user}) =>  ({
-    type: ADD_NEW_USER,
+    type: ADDED_NEW_USER,
     payload: user
   })
 
