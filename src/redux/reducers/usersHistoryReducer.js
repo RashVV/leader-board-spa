@@ -23,11 +23,12 @@ const usersHistoryReducer = (state = initialState, action) => {
         return {...state, error: true}
 
       case ADDED_NEW_USER:
-        state.participants.push(action.payload);
-        state.participants.sort((a, b) => b?.score - a?.score);
+        debugger
+        state.participants[0].push(action.payload);
+        state.participants[0].sort((a, b) => b?.score - a?.score);
           return {
             ...state,
-            participants: state.participants,
+            participants: [state.participants[0], action.payload],
             load: false
           }
 
