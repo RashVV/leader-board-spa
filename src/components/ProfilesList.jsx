@@ -8,24 +8,30 @@ import Modal from './Modal';
 export default function ProfilesList( { users }) {
   const dispatch = useDispatch();
   const [modalActive, setModalActive] = useState(false)
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState({
+    name: '',
+    score: 0
+  });
 
-  const onEdit = (user, index) => {
-		setUser({index, ...user})
+  const onEdit = (user) => {
+		setUser({ ...user})
 		setModalActive(true)
 	}
 
-	const onChange = (score) => {
+	const onChange = (key, value) => {
 		setUser(prevState => ({
 			...prevState,
-			score,
+			[key]: value ? value : +value
 		}))
 	}
 
 	const onSubmit = (e) => {
+    debugger
 		e.preventDefault()
+    setUser(user)
     setModalActive(false)
     dispatch({type: EDITED_USER_SCORE, payload: user });
+
 	}
 
 	return (
@@ -35,9 +41,9 @@ export default function ProfilesList( { users }) {
 		</ol>
 		<Modal active={modalActive} setActive={ setModalActive }>
 				<legend className='modal_header'> Edit user score </legend>
-				<input className='modal_nameUser' disabled value={ user.name } type='text' label='Enter User Name' />
+				<input className='modal_nameUser' disabled name='name' value={ user.name } onChange={ e => onChange('name', e.target.value) } type='text' />
 				<br />
-				<input className='modal_score' value={ user.score }  onChange={ e => onChange(e.target.value) }  type='number' />
+				<input className='modal_score' name='score' value={ user.score }  onChange={ e => onChange('score', e.target.value) }  type='number' />
 				<br />
 				<input onClick={ onSubmit } type="submit" value="Save"></input>
 		</Modal>

@@ -23,7 +23,6 @@ const usersHistoryReducer = (state = initialState, action) => {
         return {...state, error: true}
 
       case ADDED_NEW_USER:
-        debugger
         state.participants[0].push(action.payload);
         state.participants[0].sort((a, b) => b?.score - a?.score);
           return {
@@ -33,10 +32,18 @@ const usersHistoryReducer = (state = initialState, action) => {
           }
 
       case EDITED_USER_SCORE:
-        state.participants[action.payload.index] = action.payload;
-        state.participants.sort((a, b) => b?.score - a?.score);
+        debugger
+        state.participants[0].filter(e => e !== [action.payload.name]) ;
+        //state.participants[0].without([state.participants[0]], [action.payload.name])
+        debugger
+        // state.participants[0][action.payload.score] = action.payload.score;
+
+        state.participants[0].push(action.payload);
+        state.participants[0].sort((a, b) => b?.score - a?.score);
            return {
-            ...state
+            ...state,
+            participants: [state.participants[0], action.payload],
+            load: false
           }
       default:
         return state;
