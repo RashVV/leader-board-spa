@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import '../components/ListOfUsers.css';
 import ProfilesList from './ProfilesList';
 import { ADDED_NEW_USER } from '../redux/actionType';
+import { fetchNewUsersAction, paginationUsers } from '../redux/actions';
 import Modal from './Modal';
 
-export default function ListOfUsers({ users }) {
+export default function ListOfUsers({ users, isNextStep, currentArr }) {
   const dispatch = useDispatch();
 	const [modalActive, setModalActive] = useState(false)
 	const [user, setUser] = useState({
@@ -42,9 +43,9 @@ return (
 		<div className='list_header'>
 		<h2>Leaders table for this period</h2>
 			<div className='btn'>
-				<button className='btn_Nav' >{ '<<' }</button>
-				<button className='btn_Nav' disabled >{ '>>' }</button>
-				<button className='btn_newDay' >new day</button>
+				<button className='btn_Nav' disabled={currentArr===0} onClick={() => dispatch(paginationUsers(currentArr-1))} >{ '<<' }</button>
+				<button className='btn_Nav' disabled={isNextStep} onClick={() => dispatch(paginationUsers(currentArr+1))} >{ '>>' }</button>
+				<button className='btn_newDay' onClick={() => dispatch(fetchNewUsersAction())} >new day</button>
 				<button className='btn_addNewUser'  onClick={onEdit}>+ Add new user</button>
 			</div>
 				<Modal active={ modalActive } setActive={ setModalActive }>

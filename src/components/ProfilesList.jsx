@@ -37,7 +37,7 @@ export default function ProfilesList( { users }) {
 				<legend className='modal_header'> Edit user score </legend>
 				<input className='modal_nameUser' disabled value={ user.name } type='text' label='Enter User Name' />
 				<br />
-				<input className='modal_score' value={ user.score }  onChange={ e => onChange(e.target.value) }  type='number' />
+				<input className='modal_score' value={ user.score }  onChange={ e => onChange(+e.target.value) }  type='number' />
 				<br />
 				<input onClick={ onSubmit } type="submit" value="Save"></input>
 		</Modal>

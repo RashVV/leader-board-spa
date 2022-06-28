@@ -19,7 +19,7 @@ export default function UserTable( users, modalActive, onEdit) {
 							<h3 className='name'>{ value.name }</h3>
 						</div>
 						<div className='place'>
-							<div>Place</div>
+							<div>Place {index +1 }</div>
 						</div>
 						<button type='button' onClick={ (e) => onEdit(value, index) }>
 							<FaPen />
