@@ -7,7 +7,7 @@ export default function UserTable( users, modalActive, onEdit) {
 
 	return (
 		<>
-			{users[0]?.map((value, index) => (
+			{users?.map((value, index) => (
 				<li className='flex' key={ index }>
 					<div className='item'>
 						<img src={ UserImg } alt='logo' className='images' />

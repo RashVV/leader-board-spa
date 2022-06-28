@@ -33,7 +33,7 @@ export default function ProfilesList( { users }) {
     dispatch({type: EDITED_USER_SCORE, payload: user });
 
 	}
-
+  console.log(users[0])
 	return (
 		<>
 		<ol id='profile'>
@@ -43,7 +43,7 @@ export default function ProfilesList( { users }) {
 				<legend className='modal_header'> Edit user score </legend>
 				<input className='modal_nameUser' disabled name='name' value={ user.name } onChange={ e => onChange('name', e.target.value) } type='text' />
 				<br />
-				<input className='modal_score' name='score' value={ user.score }  onChange={ e => onChange('score', e.target.value) }  type='number' />
+				<input className='modal_score' name='score' value={ user.score }  onChange={ e => onChange('score', +e.target.value) }  type='number' />
 				<br />
 				<input onClick={ onSubmit } type="submit" value="Save"></input>
 		</Modal>

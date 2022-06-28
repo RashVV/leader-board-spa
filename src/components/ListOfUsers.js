@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, /*useSelector */} from 'react-redux';
 import '../components/ListOfUsers.css';
 import ProfilesList from './ProfilesList';
-import { ADDED_NEW_USER } from '../redux/actionType';
+import { ADDED_NEW_USER, FETCH_NEW_USERS } from '../redux/actionType';
 import Modal from './Modal';
-import { fetchUsersAction } from '../redux/actions';
+import { addNewDayUsers } from '../redux/actions';
 
 export default function ListOfUsers({ users }) {
   const dispatch = useDispatch();
@@ -49,8 +49,8 @@ return (
 		<h2>Leaders table for this period</h2>
 			<div className='btn'>
 				<button className='btn_Nav' /*onClick={ onSwitch }*/ >{ '<<' }</button>
-				<button className='btn_Nav' onClick={()=> dispatch(fetchUsersAction())}  >{ '>>' }</button>
-				<button className='btn_newDay' >new day</button>
+				<button className='btn_Nav'>{ '>>' }</button>
+				<button className='btn_newDay' onClick={()=> dispatch(addNewDayUsers(FETCH_NEW_USERS))} >new day</button>
 				<button className='btn_addNewUser'  onClick={onEdit}>+ Add new user</button>
 			</div>
 				<Modal active={ modalActive } setActive={ setModalActive }>
@@ -62,7 +62,7 @@ return (
 					<input onClick={ onSubmit } type="submit" value="Save"></input>
 				</Modal>
 			</div>
-				<ProfilesList users={ users }></ProfilesList>
+				<ProfilesList users={ users[1] ? users[1] : users[0]}></ProfilesList>
 		</div>
 	)
 }

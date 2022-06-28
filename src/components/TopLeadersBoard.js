@@ -5,8 +5,8 @@ import '../components/TopLeadersBoard.css';
 
 export default function TopLeadersBoard({users}) {
 
-  const topUsers = users[0].slice(0, 4);
-  
+  const topUsers = users[1] ? users[1].slice(0, 4) : users[0].slice(0, 4);
+
 
   return (
     <div className='top'>
