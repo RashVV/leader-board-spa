@@ -26,7 +26,7 @@ const usersHistoryReducer = (state = initialState, action) => {
     switch (action.type) {
 
       case FETCH_USERS:
-        state.participants[0] = action.payload
+        state.participants[state.currentArr] = action.payload
         return {
           ...state,
           load: false,
@@ -47,8 +47,8 @@ const usersHistoryReducer = (state = initialState, action) => {
         return {...state, error: true}
 
       case ADDED_NEW_USER:
-        state.participants.push(action.payload);
-        state.participants.sort((a, b) => b?.score - a?.score);
+        state.participants[state.currentArr].push(action.payload);
+        state.participants[state.currentArr].sort((a, b) => b?.score - a?.score);
           return {
             ...state,
             participants: state.participants,
@@ -57,16 +57,14 @@ const usersHistoryReducer = (state = initialState, action) => {
           }
 
       case EDITED_USER_SCORE:
-        debugger
-        const { name, score, index, currentArr } = action.payload
-        state.participants[currentArr][index] = { name, score };
-        state.participants.sort((a, b) => b?.score - a?.score);
+        state.participants[state.currentArr][action.payload.index] = {'name': action.payload.name, 'score': +action.payload.score};
+        state.participants[state.currentArr].sort((a, b) => b?.score - a?.score);
            return {
             ...state
           }
           case PAGINATE_USERS:
-            debugger
-        return {...state, currentArr: action.payload, isNextStep: (state.participants.length - state.currentArr) -1 < 0.1, }
+        return {...state, currentArr: action.payload, isNextStep: (state.participants.length - state.currentArr) -1 < 0.1, };
+
       default:
         return state;
     }
