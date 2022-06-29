@@ -11,12 +11,16 @@ const initialState = {
 };
 
 const usersHistoryReducer = (state = initialState, action) => {
+  console.log('isNextStep', (state.participants.length - state.currentArr) -1 > 0)
+  console.log('participants', state.participants.length)
+  console.log('currentArr', state.currentArr)
     switch (action.type) {
 
       case FETCHED_USERS:
         state.participants[state.currentArr] = action.payload
         return {
           ...state,
+          isNextStep: false,
           load: false,
           error: null
         };
@@ -26,8 +30,8 @@ const usersHistoryReducer = (state = initialState, action) => {
         return {
           ...state,
           load: false,
-          isNextStep: (state.participants.length - state.currentArr) -1 <= 0,
-          currentArr: (state.participants.length - 1),
+          isNextStep: false,
+          currentArr: (state.participants.length -1),
           error: null
         };
 
@@ -55,9 +59,15 @@ const usersHistoryReducer = (state = initialState, action) => {
         };
 
       case PAGINATE_USERS:
+        console.log('isNextStep',(state.participants.length - state.currentArr) -1 === 0)
+        console.log('participants', state.participants.length)
+        console.log('currentArr', state.currentArr)
+        console.log('newIndex', action.payload)
+
         return {
-          ...state, currentArr: action.payload,
-          isNextStep: (state.participants.length - state.currentArr) -1 < 0.1,
+          ...state,
+          currentArr: action.payload,
+          isNextStep: (state.participants.length - state.currentArr) -1 === 0,
         };
 
       default:
