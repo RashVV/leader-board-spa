@@ -43,13 +43,13 @@ return (
 		<div className='list_header'>
 		<h2>Leaders table for this period</h2>
 			<div className='btn'>
-				<button className='btn_Nav' disabled={currentArr===0} onClick={() => dispatch(paginationUsers(currentArr-1))} >{ '<<' }</button>
-				<button className='btn_Nav' disabled={isNextStep} onClick={() => dispatch(paginationUsers(currentArr+1))} >{ '>>' }</button>
+				<button className='btn_Nav' disabled={!(currentArr > 0)} onClick={() => dispatch(paginationUsers(currentArr-1))} >{ '<<' }</button>
+				<button className='btn_Nav' disabled={!isNextStep} onClick={() => dispatch(paginationUsers(currentArr+1))} >{ '>>' }</button>
 				<button className='btn_newDay' onClick={() => dispatch(fetchNewUsersAction())} >new day</button>
 				<button className='btn_addNewUser'  onClick={onEdit}>+ Add new user</button>
 			</div>
 				<Modal active={ modalActive } setActive={ setModalActive }>
-					<legend className='modal_header'> Add new user score </legend>
+					<legend className='modal_header'> Add new user and it Score</legend>
 					<input className='modal_nameUser' name='name' value={user.name}  type='text' onChange={ e => onChange('name', e.target.value) } />
 					<br />
 					<input className='modal_score' name='score' value={user.score} type='number' onChange={ e => onChange('score', e.target.value) }  />

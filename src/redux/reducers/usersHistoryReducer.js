@@ -3,7 +3,7 @@ import { FETCH_USERS, ADDED_NEW_USER, EDITED_USER_SCORE, FETCH_FAILED, FETCH_NEW
 const initialState = {
     participants: [],
     currentArr: 0,
-    isNextStep: true,
+    isNextStep: false,
     leaders: [],
     leadersCount: 4,
     load: true,
@@ -18,7 +18,7 @@ const getMaxScore = (data, count) => {
         .sort(function (a, b) { return b.score - a.score; })
         .slice(0, 4);
 
-        
+
 
 }
 
@@ -38,7 +38,8 @@ const usersHistoryReducer = (state = initialState, action) => {
           return {
             ...state,
             load: false,
-            isNextStep: (state.participants.length - state.currentArr) -1 < 0,
+            isNextStep: (state.participants.length - state.currentArr) -1 <= 0,
+            currentArr: (state.participants.length - 1),
             error: null
           }
 
@@ -51,18 +52,21 @@ const usersHistoryReducer = (state = initialState, action) => {
           return {
             ...state,
             participants: state.participants,
+            currentArr: action.payload.currentArr,
             load: false
           }
 
       case EDITED_USER_SCORE:
-        const { name, score, index } = action.payload
-        state.participants[index] = { name, score };
+        debugger
+        const { name, score, index, currentArr } = action.payload
+        state.participants[currentArr][index] = { name, score };
         state.participants.sort((a, b) => b?.score - a?.score);
            return {
             ...state
           }
           case PAGINATE_USERS:
-        return {...state, currentArr: action.payload, isNextStep: (state.participants.length - state.currentArr) -1 > 0, }
+            debugger
+        return {...state, currentArr: action.payload, isNextStep: (state.participants.length - state.currentArr) -1 < 0.1, }
       default:
         return state;
     }
