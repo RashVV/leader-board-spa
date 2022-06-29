@@ -7,8 +7,7 @@ import { fetchUsersAction } from '../redux/actions';
 
 export default function Board() {
   const dispatch = useDispatch();
-  const {participants, currentArr, isNextStep, load, error} = useSelector((state) => state.usersHistoryReducer)
-
+  const { participants, currentArr, isNextStep, load, error } = useSelector((state) => state.usersHistoryReducer)
 
   useEffect(() => {
     	dispatch(fetchUsersAction());
@@ -17,8 +16,8 @@ export default function Board() {
   return !load && participants?.length ? (
     <div className='board'>
       <h1>Cube<span className='board_header'>19</span>LeaderBoard</h1>
-        <TopLeadersBoard users={participants[currentArr]} />
-        <ListOfUsers users={participants[currentArr]} isNextStep={isNextStep} currentArr={currentArr} />
+        <TopLeadersBoard  />
+        <ListOfUsers users={ participants[currentArr] } isNextStep={ isNextStep } currentArr={ currentArr } />
     </div>
     ) : (<p>load...</p> )
 }
