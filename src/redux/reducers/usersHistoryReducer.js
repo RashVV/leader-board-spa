@@ -30,10 +30,10 @@ const usersHistoryReducer = (state = initialState, action) => {
           }
 
       case EDITED_USER_SCORE:
-        state.participants[action.payload.index] = action.payload;
-        state.participants.sort((a, b) => b?.score - a?.score);
+        state.participants[0][action.payload.index] = {'name': action.payload.name, 'score': +action.payload.score};
+        state.participants[0].sort((a, b) => b?.score - a?.score);
            return {
-            ...state
+            ...state,
           }
       default:
         return state;
