@@ -1,4 +1,4 @@
-import { FETCHED_USERS, ADDED_NEW_USER, EDITED_USER_SCORE, FETCH_FAILED, FETCH_NEW_USERS, PAGINATE_USERS } from '../actionType';
+import { FETCHED_USERS, ADDED_NEW_USER, EDITED_USER_SCORE, FETCH_FAILED, FETCHED_NEW_USERS, PAGINATED_USERS } from '../actionType';
 
 const initialState = {
     participants: [],
@@ -20,8 +20,9 @@ const usersHistoryReducer = (state = initialState, action) => {
           error: null
         };
 
-      case FETCH_NEW_USERS:
-        const res = action.payload.map(value => {
+      case FETCHED_NEW_USERS:
+
+          const res = action.payload.map(value => {
           const [{place}] = state.participants[state.currentArr].filter((e) => e.name === value.name)
           return {
             ...value,
@@ -29,6 +30,7 @@ const usersHistoryReducer = (state = initialState, action) => {
           }
         })
         state.participants.push(res);
+        debugger
         return {
           ...state,
           load: false,
@@ -58,7 +60,7 @@ const usersHistoryReducer = (state = initialState, action) => {
           ...state
         };
 
-      case PAGINATE_USERS:
+      case PAGINATED_USERS:
         return {
           ...state,
           currentArr: action.payload,
