@@ -23,7 +23,7 @@ export default function UserTable( users, modalActive, onEdit) {
                 <p style={{
                     color: value.newPlace >= 0 ? 'green' : 'red'
                   }}>
-                  Place {value.newPlace > 0 ? (<span>&uarr;</span>) : (<span>&darr;</span>)} {value.newPlace}
+                  Place {value.newPlace > 0 ? (<span>&uarr;</span>) : (<span>&darr;</span>)} {Math.abs(value.newPlace)}
                 </p>
               )}
                 {value.newPlace === 0 && (<p className='noChange'>no change place</p>)}
