@@ -19,7 +19,6 @@ export const fetchUsersAction = () => {
 };
 
 export const fetchNewUsersAction = () => {
-  debugger
 	return async (dispatch) => {
 		try {
 			let response = await axios.get('http://coding-test.cube19.io/frontend/v1/starting-state');

@@ -30,7 +30,6 @@ const usersHistoryReducer = (state = initialState, action) => {
           }
         })
         state.participants.push(res);
-        debugger
         return {
           ...state,
           load: false,

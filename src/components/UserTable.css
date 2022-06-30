@@ -18,10 +18,12 @@ span {
   border-radius: 8px;
 }
 .place {
-  display: flex;
   align-items: center;
 }
-
 .place p {
   margin-left: 10px;
+}
+.noChange {
+  display: contents;
+  color: rgb(82, 82, 9)
 }

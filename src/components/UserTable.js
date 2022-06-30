@@ -26,9 +26,8 @@ export default function UserTable( users, modalActive, onEdit) {
                   Place {value.newPlace > 0 ? (<span>&uarr;</span>) : (<span>&darr;</span>)} {value.newPlace}
                 </p>
               )}
-
-                {value.newPlace === 0 && (<p>the same place</p>)}
-                {!value.newPlace && (<p>started</p>)}
+                {value.newPlace === 0 && (<p className='noChange'>no change place</p>)}
+                {!value.newPlace && (<p>today</p>)}
 						</div>
 						<button type='button' onClick={ (e) => onEdit(value, index) }>
 							<FaPen />
