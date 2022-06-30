@@ -19,7 +19,16 @@ export default function UserTable( users, modalActive, onEdit) {
 							<h3 className='name'>{ value.name }</h3>
 						</div>
 						<div className='place'>
-							<div>Place {index +1 }</div>
+              {!!value.newPlace && value.newPlace !== 0 && (
+                <p style={{
+                    color: value.newPlace >= 0 ? 'green' : 'red'
+                  }}>
+                  Place {value.newPlace > 0 ? (<span>&uarr;</span>) : (<span>&darr;</span>)} {value.newPlace}
+                </p>
+              )}
+
+                {value.newPlace === 0 && (<p>the same place</p>)}
+                {!value.newPlace && (<p>started</p>)}
 						</div>
 						<button type='button' onClick={ (e) => onEdit(value, index) }>
 							<FaPen />

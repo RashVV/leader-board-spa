@@ -41,7 +41,7 @@ return (
 		<div className='list_header'>
 		<h2>Leaders table for this period</h2>
 			<div className='btn'>
-				<button className='btn_Nav' disabled={ currentArr === 0 } onClick={ () => dispatch(paginationUsersAction(currentArr-1)) } >{ '<<' }</button>
+      <button className='btn_Nav' disabled={ currentArr === 0 } onClick={ () => dispatch(paginationUsersAction(currentArr-1)) } >{ '<<' }</button>
 				<button className='btn_Nav' disabled={ !isNextStep } onClick={ () => dispatch(paginationUsersAction(currentArr+1)) } >{ '>>' }</button>
 				<button className='btn_newDay' onClick={ () => dispatch(fetchNewUsersAction()) } >new day</button>
 				<button className='btn_addNewUser'  onClick={ onEdit }>+ Add new user</button>

@@ -4,29 +4,31 @@ const initialState = {
     participants: [],
     currentArr: 0,
     isNextStep: false,
-    leaders: [],
     leadersCount: 4,
     load: true,
     error: null,
 };
 
 const usersHistoryReducer = (state = initialState, action) => {
-  console.log('isNextStep', (state.participants.length - state.currentArr) -1 > 0)
-  console.log('participants', state.participants.length)
-  console.log('currentArr', state.currentArr)
     switch (action.type) {
 
       case FETCHED_USERS:
         state.participants[state.currentArr] = action.payload
         return {
           ...state,
-          isNextStep: false,
           load: false,
           error: null
         };
 
       case FETCH_NEW_USERS:
-        state.participants.push(action.payload);
+        const res = action.payload.map(value => {
+          const [{place}] = state.participants[state.currentArr].filter((e) => e.name === value.name)
+          return {
+            ...value,
+            newPlace: place - value.place
+          }
+        })
+        state.participants.push(res);
         return {
           ...state,
           load: false,
@@ -46,8 +48,6 @@ const usersHistoryReducer = (state = initialState, action) => {
         state.participants[state.currentArr].sort((a, b) => b?.score - a?.score);
         return {
           ...state,
-          participants: state.participants,
-          currentArr: action.payload.currentArr,
           load: false
         };
 
@@ -59,15 +59,10 @@ const usersHistoryReducer = (state = initialState, action) => {
         };
 
       case PAGINATE_USERS:
-        console.log('isNextStep',(state.participants.length - state.currentArr) -1 === 0)
-        console.log('participants', state.participants.length)
-        console.log('currentArr', state.currentArr)
-        console.log('newIndex', action.payload)
-
         return {
           ...state,
           currentArr: action.payload,
-          isNextStep: (state.participants.length - state.currentArr) -1 === 0,
+          isNextStep: (state.participants.length - action.payload) -1 !== 0,
         };
 
       default:
