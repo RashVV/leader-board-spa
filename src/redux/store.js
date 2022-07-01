@@ -6,9 +6,8 @@ export const store = configureStore({
   reducer: allReducers,
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
-    immutableCheck: {
-      ignoredPaths: ['participants', 'leaders'],
-    },
+    immutableCheck: false,
     thunk,
+    serializableCheck: false,
   }),
 });
