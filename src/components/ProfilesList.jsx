@@ -1,110 +1,46 @@
-import React, { useEffect, useState} from 'react';
-import { useSelector, useDispatch} from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import '../components/ProfilesList.css';
-import UserImg from '../images/userImg.png'
-import {FaPen} from 'react-icons/fa';
-import { fetchUsersAction } from '../redux/actions';
+import UserTable from './UserTable';
+import { EDITED_USER_SCORE } from '../redux/actionType';
 import Modal from './Modal';
 
-export default function ProfilesList( {sortedUsers, fetchUsers}) {
+export default function ProfilesList({ users }) {
+  const dispatch = useDispatch();
   const [modalActive, setModalActive] = useState(false)
+	const [user, setUser] = useState({});
 
-	useEffect(() => {
-		dispatch(fetchUsersAction());
-	  }, [dispatch]);
+  const onEdit = (user, index) => {
+		setUser({ index, ...user })
+		setModalActive(true)
+	}
 
-		let userList =Array.from(users);
-		let sortedList = userList.sort((a, b) => b?.score - a?.score);
+	const onChange = (score) => {
+		setUser(prevState => ({
+			...prevState,
+			score,
+		}))
+	}
 
-  return (
-  <> <div className='item_users_list'>
+	const onSubmit = (e) => {
+		e.preventDefault()
+    setModalActive(false)
+    dispatch({ type: EDITED_USER_SCORE, payload: user });
+	}
 
-	<ol id='profile'>
-      {item(sortedUsers, modalActive, setModalActive)}
-	</ol>
-    </>
-  )
-}
-
-function item(sortedUsers, modalActive, setModalActive) {
 	return (
 		<>
-		{
-			Array.from(sortedUsers)?.map((value,index) => (
-				<>
-				<Modal active={modalActive} setActive={setModalActive} key={index}>
-						<form action=''>
-							<legend className='modal_header'> Edit user score </legend>
-							<legend className='modal_nameUser'>{value.name}</legend>
-							<input className='modal_score' type='number' />
-							<br/>
-							<input type="submit" value="Save"></input>
-						</form>
-					</Modal>
-					<li className='flex' key={index}>
-					<div className='item'>
-						<img src={UserImg} alt='logo' className='images' />
-						<div className='item'>
-							<span>{value.score}</span>
-						</div>
-						<div>
-							<h3 className='name'>{value.name}</h3>
-						</div>
-						<div className='place'>
-							<div>Place</div>
-						</div>
-						<div>
-							<button onClick={() => setModalActive(true)}>
-								<FaPen />
-							</button>
-						</div>
-					</div>
-				</li>
-			))}
-
-		</div>
-
-					<>
-						<Modal active={modalActive} setActive={setModalActive}>
-							<form action=''>
-								<legend className='modal_header'> Edit user score </legend>
-								<input className='modal_nameUser' type='text' label='Enter User Name'/>
-								<input className='modal_score' type='number' />
-								<br />
-								<input type="submit" value="Save"></input>
-							</form>
-						</Modal>
-					</>
-
-    </>
-  )
+		<ol id='profile'>
+		{ UserTable(users, modalActive, onEdit) }
+		</ol>
+		<Modal active={modalActive} setActive={ setModalActive }>
+				<legend className='modal_header'> Edit user score </legend>
+				<input className='modal_nameUser' disabled value={ user.name } type='text' />
+				<br />
+				<input className='modal_score' value={ user.score }  onChange={ e => onChange(+e.target.value) }  type='number' />
+				<br />
+				<input onClick={ onSubmit } type="submit" value="Save"></input>
+		</Modal>
+		</>
+	)
 }
-
-
-// function item( sortedList, setModalActive ) {
-// 	return (
-// 	<>
-// 		{sortedList?.map((value, index) => (
-// 			<li className='flex' key={index}>
-// 				<div className='item'>
-// 					<img src={UserImg} alt='logo' className='images' />
-// 						<div className='item_score'>
-// 							<span>{value.score}</span>
-// 						</div>
-// 						<div>
-// 							<h3 className='name'>{value.name}</h3>
-// 						</div>
-// 						<div className='place'>
-// 							<div>Place</div>
-// 						</div>
-// 						<div>
-// 							<button onClick={() => setModalActive(true)}>
-// 								<FaPen />
-// 							</button>
-// 						</div>
-// 					</div>
-// 				</li>
-// 			))}
-// 		</>
-// 	)
-// }

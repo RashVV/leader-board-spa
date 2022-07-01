@@ -1,0 +1,29 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.name {
+  text-transform: capitalize;
+}
+.flex {
+  padding: 5px;
+  margin-left: 35px;
+}
+span {
+  font-weight: bold;
+}
+.images {
+  border: 1px solid #0a0a0a;
+  border-radius: 8px;
+}
+.place {
+  align-items: center;
+}
+.place p {
+  margin-left: 10px;
+}
+.noChange {
+  display: contents;
+  color: rgb(82, 82, 9)
+}
