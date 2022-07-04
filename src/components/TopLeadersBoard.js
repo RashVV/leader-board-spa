@@ -5,7 +5,8 @@ import userImg  from '../images/userImg.png'
 import '../components/TopLeadersBoard.css';
 
 export default function TopLeadersBoard() {
-  const { participants } = useSelector((state) => state.usersHistoryReducer);
+  
+  const { participants } = useSelector((state) => state.users);
   const leaders = participants.flat(Infinity);
   const topUsers = leaders.sort((a, b) => b?.score - a?.score).slice(0, 4);
 

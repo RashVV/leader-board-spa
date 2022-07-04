@@ -9,7 +9,7 @@ const initialState = {
     error: null,
 };
 
-const usersHistoryReducer = (state = initialState, action) => {
+const users = (state = initialState, action) => {
     switch (action.type) {
 
       case FETCHED_USERS:
@@ -71,4 +71,4 @@ const usersHistoryReducer = (state = initialState, action) => {
     }
 }
 
-export default usersHistoryReducer;
+export default users;

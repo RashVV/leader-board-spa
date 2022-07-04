@@ -1,8 +1,8 @@
 import {combineReducers} from "redux";
-import usersHistoryReducer from './usersHistoryReducer';
+import users from './users';
 
 const allReducers = combineReducers({
-    usersHistoryReducer: usersHistoryReducer,
+    users: users,
   });
 
 export default allReducers;

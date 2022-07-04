@@ -1,15 +1,12 @@
 import { EDITED_USER_SCORE, ADDED_NEW_USER, FETCHED_USERS, FETCH_FAILED, FETCHED_NEW_USERS, PAGINATED_USERS } from './actionType';
 import axios from 'axios';
+import getUsers from '../services/fetchUsers';
 
 export const fetchUsersAction = () => {
 	return async (dispatch) => {
 		try {
-			let response = await axios.get('http://coding-test.cube19.io/frontend/v1/starting-state');
-			const payload = response.data.map((value) => value.score ? value : { ...value, score:0 }).sort((a, b) => b?.score - a?.score)
-      const places = payload.map((_, index) => ({
-        ..._,
-        place: index+1
-      }))
+      debugger
+      const places =  getUsers();
 		    dispatch({ type: FETCHED_USERS, payload: places });
 	  } catch (e) {
 		  console.warn(e)

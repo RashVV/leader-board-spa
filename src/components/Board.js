@@ -7,8 +7,8 @@ import { fetchUsersAction } from '../redux/actions';
 
 export default function Board() {
   const dispatch = useDispatch();
-  const { participants, currentArr, isNextStep, load, error } = useSelector((state) => state.usersHistoryReducer)
-  
+  const { participants, currentArr, isNextStep, load, error } = useSelector((state) => state.users)
+
   useEffect(() => {
     	dispatch(fetchUsersAction());
       }, [dispatch, error]);

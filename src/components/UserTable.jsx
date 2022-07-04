@@ -3,12 +3,10 @@ import './UserTable.css';
 import UserImg from '../images/userImg.png';
 import { FaPen } from 'react-icons/fa';
 
-
-export default function UserTable( users, modalActive, onEdit) {
+export default function UserTable( {users={users}, modalActive={modalActive}, onEdit={onEdit}}) {
 
 	return (
-		<>
-			{users?.map((value, index) => (
+			 users.map((value, index) => (
 				<li className='flex' key={ index }>
 					<div className='item'>
 						<img src={ UserImg } alt='logo' className='images' />
@@ -34,7 +32,6 @@ export default function UserTable( users, modalActive, onEdit) {
 						</button>
 				</div>
 				</li>
-			))}
-		</>
+			))
 	)}
 

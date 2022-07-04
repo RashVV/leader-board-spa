@@ -31,7 +31,7 @@ export default function ProfilesList({ users }) {
 	return (
 		<>
 		<ol id='profile'>
-		{ UserTable(users, modalActive, onEdit) }
+		<UserTable users={users}  modalActive= {modalActive} onEdit={onEdit} />
 		</ol>
 		<Modal active={modalActive} setActive={ setModalActive }>
 				<legend className='modal_header'> Edit user score </legend>
