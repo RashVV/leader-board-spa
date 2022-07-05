@@ -3,6 +3,7 @@ import './UserTable.css';
 import UserImg from '../images/userImg.png';
 import { FaPen } from 'react-icons/fa';
 
+// eslint-disable-next-line no-use-before-define
 export default function UserTable( {users={users}, modalActive={modalActive}, onEdit={onEdit}}) {
 
 	return (

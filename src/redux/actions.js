@@ -5,7 +5,6 @@ import {getUsers} from '../services/fetchUsers';
 export const fetchUsersAction = () => {
 	return async (dispatch) => {
 		try {
-      debugger
       const places = await getUsers();
 		    dispatch({ type: FETCHED_USERS, payload: places });
 	  } catch (e) {

@@ -9,7 +9,6 @@ export  async  function getUsers() {
           ..._,
           place: index+1
         }))
-      debugger
       return places
 
   } catch (e) {

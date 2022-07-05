@@ -4,9 +4,8 @@ const initialState = {
     participants: [],
     currentArr: 0,
     isNextStep: false,
-    leadersCount: 4,
     load: true,
-    error: null,
+    error: false,
 };
 
 const users = (state = initialState, action) => {
@@ -17,7 +16,7 @@ const users = (state = initialState, action) => {
         return {
           ...state,
           load: false,
-          error: null
+          error: false
         };
 
       case FETCHED_NEW_USERS:
@@ -53,8 +52,24 @@ const users = (state = initialState, action) => {
         };
 
       case EDITED_USER_SCORE:
-        state.participants[state.currentArr][action.payload.index] = {'name': action.payload.name, 'score': +action.payload.score};
+
+        state.participants[state.currentArr][action.payload.index] = {'name': action.payload.name, 'score': +action.payload.score, 'oldPlace': +action.payload.place};
         state.participants[state.currentArr].sort((a, b) => b?.score - a?.score);
+        const recount = state.participants[state.currentArr].map(value => {
+         state.participants[state.currentArr].filter((e) => e.name === value.name)?.forEach((item) => {
+            return value = [{'name': item.name, 'score': item.score, 'oldPlace': item.place }];
+        });
+        ;
+
+
+          debugger
+          return {
+            ...value,
+          }
+        })
+        const endOfADay = Object.assign.apply({}, [recount.flat(Infinity)]);
+
+        state.participants[state.currentArr].push(endOfADay);
         return {
           ...state
         };
