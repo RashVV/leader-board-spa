@@ -9,10 +9,10 @@ const initialState = {
 };
 
 const users = (state = initialState, action) => {
-    switch (action.type) {
 
-      case FETCHED_USERS:
-        state.participants[state.currentArr] = action.payload
+  switch (action.type) {
+    case FETCHED_USERS:
+      state.participants[state.currentArr] = action.payload
         return {
           ...state,
           load: false,
@@ -20,16 +20,15 @@ const users = (state = initialState, action) => {
         };
 
       case FETCHED_NEW_USERS:
-
-          const res = action.payload.map(value => {
-          const [{place}] = state.participants[state.currentArr].filter((e) => e.name === value.name)
+        const res = action.payload.map(value => {
+        const [{place}] = state.participants[state.currentArr].filter((e) => e.name === value.name)
           return {
             ...value,
             gapPlace: place - value.place
           }
         })
         state.participants.push(res);
-        return {
+         return {
           ...state,
           load: false,
           isNextStep: false,
@@ -55,19 +54,18 @@ const users = (state = initialState, action) => {
         state.participants[state.currentArr][action.payload.index] = {'name': action.payload.name, 'score': +action.payload.score, 'oldPlace': action.payload.index+1, 'gapPlace': action.payload.gapPlace === undefined ?  0 : action.payload.gapPlace, 'newPlace': action.payload.newPlace === undefined ? action.payload.place : action.payload.newPlace };
         state.participants[state.currentArr].sort((a, b) => b?.score - a?.score);
         const recount = state.participants[state.currentArr].map(value => {
-         state.participants[state.currentArr].filter((e) => e.name === value.name)?.forEach((item) => {
+          state.participants[state.currentArr].filter((e) => e.name === value.name)?.forEach((item) => {
             return value = [{'name': item.name, 'score': item.score, 'oldPlace': item.oldPlace ? item.oldPlace : item.place }];
-        });
-          return {
-            ...value,
-            newPlace: value.index+1,
-
-          }
-        })
+          });
+            return {
+              ...value,
+              newPlace: value.index+1,
+            }
+          })
         const endOfADay = Object.assign.apply({}, [recount.flat(Infinity)]);
         var vals = endOfADay.map(function(a) {return a[0];});
         var finalScore = vals.map((value, index) => {
-          const [{place}] = vals.filter((e) => e.name === value.name)
+        const [{place}] = vals.filter((e) => e.name === value.name)
           return {
             ...value,
             oldPlace: value.oldPlace,
@@ -75,12 +73,11 @@ const users = (state = initialState, action) => {
             gapPlace: index+1 - value.oldPlace,
           }
         })
-
         state.participants[state.currentArr].splice(0, 8);
         state.participants[state.currentArr].push(finalScore[0], finalScore[1], finalScore[2], finalScore[3], finalScore[4], finalScore[5], finalScore[6], finalScore[7]);
-        return {
-          ...state
-        };
+          return {
+            ...state
+          };
 
       case PAGINATED_USERS:
         return {
