@@ -25,7 +25,7 @@ const users = (state = initialState, action) => {
           const [{place}] = state.participants[state.currentArr].filter((e) => e.name === value.name)
           return {
             ...value,
-            newPlace: place - value.place
+            gapPlace: place - value.place
           }
         })
         state.participants.push(res);
@@ -52,24 +52,32 @@ const users = (state = initialState, action) => {
         };
 
       case EDITED_USER_SCORE:
-
-        state.participants[state.currentArr][action.payload.index] = {'name': action.payload.name, 'score': +action.payload.score, 'oldPlace': +action.payload.place};
+        state.participants[state.currentArr][action.payload.index] = {'name': action.payload.name, 'score': +action.payload.score, 'oldPlace': action.payload.index+1, 'gapPlace': action.payload.gapPlace === undefined ?  0 : action.payload.gapPlace, 'newPlace': action.payload.newPlace === undefined ? action.payload.place : action.payload.newPlace };
         state.participants[state.currentArr].sort((a, b) => b?.score - a?.score);
         const recount = state.participants[state.currentArr].map(value => {
          state.participants[state.currentArr].filter((e) => e.name === value.name)?.forEach((item) => {
-            return value = [{'name': item.name, 'score': item.score, 'oldPlace': item.place }];
+            return value = [{'name': item.name, 'score': item.score, 'oldPlace': item.oldPlace ? item.oldPlace : item.place }];
         });
-        ;
-
-
-          debugger
           return {
             ...value,
+            newPlace: value.index+1,
+
           }
         })
         const endOfADay = Object.assign.apply({}, [recount.flat(Infinity)]);
+        var vals = endOfADay.map(function(a) {return a[0];});
+        var finalScore = vals.map((value, index) => {
+          const [{place}] = vals.filter((e) => e.name === value.name)
+          return {
+            ...value,
+            oldPlace: value.oldPlace,
+            newPlace: index+1,
+            gapPlace: index+1 - value.oldPlace,
+          }
+        })
 
-        state.participants[state.currentArr].push(endOfADay);
+        state.participants[state.currentArr].splice(0, 8);
+        state.participants[state.currentArr].push(finalScore[0], finalScore[1], finalScore[2], finalScore[3], finalScore[4], finalScore[5], finalScore[6], finalScore[7]);
         return {
           ...state
         };

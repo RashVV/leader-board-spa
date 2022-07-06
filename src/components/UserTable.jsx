@@ -18,15 +18,15 @@ export default function UserTable( {users={users}, modalActive={modalActive}, on
 							<h3 className='name'>{ value.name }</h3>
 						</div>
 						<div className='place'>
-              {!!value.newPlace && value.newPlace !== 0 && (
+              {!!value.gapPlace && value.gapPlace !== 0 && (
                 <p style={{
-                    color: value.newPlace >= 0 ? 'green' : 'red'
+                    color: value.gapPlace <= 0 ? 'green' : 'red'
                   }}>
-                  Place {value.newPlace > 0 ? (<span>&uarr;</span>) : (<span>&darr;</span>)} {Math.abs(value.newPlace)}
+                  Place {value.gapPlace < 0 ? (<span>&uarr;</span>) : (<span>&darr;</span>)} {Math.abs(value.gapPlace)}
                 </p>
               )}
-                {value.newPlace === 0 && (<p className='noChange'>no change place</p>)}
-                {!value.newPlace && (<p>today</p>)}
+                {value.gapPlace === 0 && (<p className='noChange'>no change place</p>)}
+                {!value.gapPlace && (<p>today</p>)}
 						</div>
 						<button type='button' onClick={ (e) => onEdit(value, index) }>
 							<FaPen />
