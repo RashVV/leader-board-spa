@@ -5,7 +5,7 @@ import userImg  from '../images/userImg.png'
 import '../components/TopLeadersBoard.css';
 
 export default function TopLeadersBoard() {
-  
+
   const { participants } = useSelector((state) => state.users);
   const leaders = participants.flat(Infinity);
   const topUsers = leaders.sort((a, b) => b?.score - a?.score).slice(0, 4);
@@ -21,10 +21,10 @@ export default function TopLeadersBoard() {
 					      <div className="top_leaders--img">
 						      <img src={ userImg } alt='topUsers' />
                 <div>
-							      <h1 className="top_leaders--block-title">{ value.name }</h1>
+							      <h1 className="top_leaders--block-title">{ value?.name }</h1>
 						    </div>
 						    <div className="top_leaders--block-score">
-							    <span>{ value.score }</span>
+							    <span>{ value?.score }</span>
 						    </div>
 				        </div>
 				    </li>

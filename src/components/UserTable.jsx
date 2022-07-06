@@ -1,13 +1,18 @@
+/* eslint-disable no-use-before-define */
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './UserTable.css';
 import UserImg from '../images/userImg.png';
 import { FaPen } from 'react-icons/fa';
 
-// eslint-disable-next-line no-use-before-define
-export default function UserTable( {users={users}, modalActive={modalActive}, onEdit={onEdit}}) {
+
+export default function UserTable( {modalActive={modalActive}, onEdit={onEdit}}) {
+  const users = useSelector((state) => state.users.participants);
+  const arrayPlace = useSelector((state) => state.users.currentArr)
+  const shownUsers = users[arrayPlace];
 
 	return (
-			 users?.map((value, index) => (
+    shownUsers?.map((value, index) => (
 				<li className='flex' key={ index }>
 					<div className='item'>
 						<img src={ UserImg } alt='logo' className='images' />

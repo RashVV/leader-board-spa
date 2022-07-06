@@ -16,7 +16,7 @@ const users = (state = initialState, action) => {
         return {
           ...state,
           load: false,
-          error: false
+          error: action.payload === undefined ? true : false
         };
 
       case FETCHED_NEW_USERS:
@@ -24,7 +24,8 @@ const users = (state = initialState, action) => {
         const [{place}] = state.participants[state.currentArr].filter((e) => e.name === value.name)
           return {
             ...value,
-            gapPlace: place - value.place
+            gapPlace: place - value.place,
+            error: action.payload === undefined ? true : false
           }
         })
         state.participants.push(res);
@@ -33,13 +34,14 @@ const users = (state = initialState, action) => {
           load: false,
           isNextStep: false,
           currentArr: (state.participants.length -1),
-          error: null
+          error: action.payload === undefined ? true : false
         };
 
       case FETCH_FAILED:
+        state.participants[state.currentArr] = action.payload
         return {
           ...state,
-          error: true
+          error: action.payload.length === 0 ? true : false
         };
 
       case ADDED_NEW_USER:
@@ -63,14 +65,14 @@ const users = (state = initialState, action) => {
             }
           })
         const endOfADay = Object.assign.apply({}, [recount.flat(Infinity)]);
-        var vals = endOfADay.map(function(a) {return a[0];});
-        var finalScore = vals.map((value, index) => {
-        const [{place}] = vals.filter((e) => e.name === value.name)
+        var dayChanges = endOfADay.map(function(a) {return a[0];});
+        var finalScore = dayChanges.map((value, index) => {
+        let [{place}] = dayChanges.filter((e) => e.name === value.name)
           return {
             ...value,
             oldPlace: value.oldPlace,
             newPlace: index+1,
-            gapPlace: index+1 - value.oldPlace,
+            gapPlace: index+1 - value.oldPlace
           }
         })
         state.participants[state.currentArr].splice(0, 8);
