@@ -38,10 +38,10 @@ const users = (state = initialState, action) => {
         };
 
       case FETCH_FAILED:
-        state.participants[state.currentArr] = action.payload
-        return {
+         return {
           ...state,
-          error: action.payload.length === 0 ? true : false
+          load: true,
+          error: true
         };
 
       case ADDED_NEW_USER:

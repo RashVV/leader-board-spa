@@ -11,9 +11,9 @@ export default function Board() {
 
   useEffect(() => {
     	dispatch(fetchUsersAction());
-      }, [dispatch, error], error);
+      }, [dispatch, error]);
 
-  return !load && participants?.length ? (
+  return !load ? (
     <div className='board'>
       <h1>Cube<span className='board_header'>19</span>LeaderBoard</h1>
         <TopLeadersBoard  />

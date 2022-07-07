@@ -7,8 +7,7 @@ export const fetchUsersAction = () => {
       const places = await getUsers();
 		    dispatch({ type: FETCHED_USERS, payload: places });
 	  } catch (e) {
-		  console.warn(e)
-		  dispatch({ type: FETCH_FAILED,  payload: [], error: e });
+		  dispatch({ type: FETCH_FAILED,  payload: [], error: true });
 	    }
   };
 };
