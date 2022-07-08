@@ -8,7 +8,7 @@ import { FaPen } from 'react-icons/fa';
 
 export default function UserTable( {modalActive={modalActive}, onEdit={onEdit}}) {
   const users = useSelector((state) => state.users.participants);
-  const arrayPlace = useSelector((state) => state.users.currentArr)
+  const arrayPlace = useSelector((state) => state.users.currentIndexArr)
   const shownUsers = users[arrayPlace];
 
 	return (
