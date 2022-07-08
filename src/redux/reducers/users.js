@@ -2,7 +2,7 @@ import { FETCHED_USERS, ADDED_NEW_USER, EDITED_USER_SCORE, FETCH_FAILED, FETCHED
 
 const initialState = {
     participants: [],
-    currentArr: 0,
+    currentIndexArr: 0,
     isNextStep: false,
     load: true,
     error: false,
@@ -12,7 +12,7 @@ const users = (state = initialState, action) => {
 
   switch (action.type) {
     case FETCHED_USERS:
-      state.participants[state.currentArr] = action.payload
+      state.participants[state.Index] = action.payload
         return {
           ...state,
           load: false,
@@ -21,7 +21,7 @@ const users = (state = initialState, action) => {
 
       case FETCHED_NEW_USERS:
         const res = action.payload.map(value => {
-        const [{place}] = state.participants[state.currentArr].filter((e) => e.name === value.name)
+        const [{place}] = state.participants[state.Index].filter((e) => e.name === value.name)
           return {
             ...value,
             gapPlace: place - value.place,
@@ -33,7 +33,7 @@ const users = (state = initialState, action) => {
           ...state,
           load: false,
           isNextStep: false,
-          currentArr: (state.participants.length -1),
+          Index: (state.participants.length -1),
           error: action.payload === undefined ? true : false
         };
 
@@ -45,18 +45,18 @@ const users = (state = initialState, action) => {
         };
 
       case ADDED_NEW_USER:
-        state.participants[state.currentArr].push(action.payload);
-        state.participants[state.currentArr].sort((a, b) => b?.score - a?.score);
+        state.participants[state.Index].push(action.payload);
+        state.participants[state.Index].sort((a, b) => b?.score - a?.score);
         return {
           ...state,
           load: false
         };
 
       case EDITED_USER_SCORE:
-        state.participants[state.currentArr][action.payload.index] = {'name': action.payload.name, 'score': +action.payload.score, 'oldPlace': action.payload.index+1, 'gapPlace': action.payload.gapPlace === undefined ?  0 : action.payload.gapPlace, 'newPlace': action.payload.newPlace === undefined ? action.payload.place : action.payload.newPlace };
-        state.participants[state.currentArr].sort((a, b) => b?.score - a?.score);
-        const recount = state.participants[state.currentArr].map(value => {
-          state.participants[state.currentArr].filter((e) => e.name === value.name)?.forEach((item) => {
+        state.participants[state.Index][action.payload.index] = {'name': action.payload.name, 'score': +action.payload.score, 'oldPlace': action.payload.index+1, 'gapPlace': action.payload.gapPlace === undefined ?  0 : action.payload.gapPlace, 'newPlace': action.payload.newPlace === undefined ? action.payload.place : action.payload.newPlace };
+        state.participants[state.Index].sort((a, b) => b?.score - a?.score);
+        const recount = state.participants[state.Index].map(value => {
+          state.participants[state.Index].filter((e) => e.name === value.name)?.forEach((item) => {
             return value = [{'name': item.name, 'score': item.score, 'oldPlace': item.oldPlace ? item.oldPlace : item.place }];
           });
             return {
@@ -75,8 +75,8 @@ const users = (state = initialState, action) => {
             gapPlace: index+1 - value.oldPlace
           }
         })
-        state.participants[state.currentArr].splice(0, 8);
-        state.participants[state.currentArr].push(finalScore[0], finalScore[1], finalScore[2], finalScore[3], finalScore[4], finalScore[5], finalScore[6], finalScore[7]);
+        state.participants[state.Index].splice(0, 8);
+        state.participants[state.Index].push(finalScore[0], finalScore[1], finalScore[2], finalScore[3], finalScore[4], finalScore[5], finalScore[6], finalScore[7]);
           return {
             ...state
           };
@@ -84,7 +84,7 @@ const users = (state = initialState, action) => {
       case PAGINATED_USERS:
         return {
           ...state,
-          currentArr: action.payload,
+          Index: action.payload,
           isNextStep: (state.participants.length - action.payload) -1 !== 0,
         };
 

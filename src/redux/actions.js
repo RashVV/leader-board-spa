@@ -34,7 +34,7 @@ export const addNewUserAction = ({user}) =>  ({
   payload: user
   })
 
-export const paginationUsersAction = (currentArr) => ({
+export const paginationUsersAction = (currentIndexArr) => ({
   type: PAGINATED_USERS,
-  payload: currentArr
+  payload: currentIndexArr
   })
