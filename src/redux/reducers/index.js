@@ -1,10 +1,8 @@
 import {combineReducers} from "redux";
-import usersChangeReducer from "./usersChangeReducer";
-import usersHistoryScoreReducer from './usersHistoryScoreReducer';
+import users from './users';
 
 const allReducers = combineReducers({
-    usersChangeReducer: usersChangeReducer,
-    usersHistoryScoreReducer: usersHistoryScoreReducer,
+    users: users,
   });
 
 export default allReducers;

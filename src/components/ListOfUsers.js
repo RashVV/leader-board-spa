@@ -1,31 +1,61 @@
-import React, { useState, useEffect} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import '../components/ListOfUsers.css';
 import ProfilesList from './ProfilesList';
-import { fetchUsersAction } from '../redux/actions';
+import { ADDED_NEW_USER } from '../redux/actionType';
+import { fetchNewUsersAction, paginationUsersAction } from '../redux/actions';
+import Modal from './Modal';
 
-export default function ListOfUsers() {
-	const dispatch = useDispatch();
-	const usersFromApi = useSelector((state) => state.usersHistoryScoreReducer)
-	const [users, setUsers] = useState(Array.from(usersFromApi))
+export default function ListOfUsers({ users, isNextStep, currentIndexArr }) {
+  const dispatch = useDispatch();
+	const [modalActive, setModalActive] = useState(false)
+	const [user, setUser] = useState({
+    name: '',
+    score: 0
+  });
 
-	useEffect(() => {
-		dispatch(fetchUsersAction());
-		setUsers(users);
-	  }, [dispatch, users]);
+	const onEdit = (user) => {
+		setUser({
+      name: '',
+      score: ''
+    })
+		setModalActive(true)
+	}
 
-  return (
-    <div className='list'>
-			<div className='list_header'>
-      <h2>Leaders table for this period</h2>
+  const onChange = (key, value) => {
+		setUser(prevState => ({
+			...prevState,
+			[key]: isNaN(value) ? value : +value
+		}))
+	}
+
+	const onSubmit = (e) => {
+    setUser({})
+    setModalActive(false);
+    dispatch({ type: ADDED_NEW_USER, payload: user });
+		e.preventDefault()
+	}
+
+return (
+	<div className='list'>
+		<div className='list_header'>
+		<h2>Leaders table for this period</h2>
 			<div className='btn'>
-				<button className='btn_Nav' >{'<<'}</button>
-				<button className='btn_Nav' disabled >{'>>'}</button>
-				<button className='btn_newDay' onClick={fetchUsersAction}>new day</button>
-				<button className='btn_addNewUser'>+ Add new user</button>
+      <button className='btn_Nav' disabled={ currentIndexArr === 0 } onClick={ () => dispatch(paginationUsersAction(currentIndexArr-1)) } >{ '<<' }</button>
+				<button className='btn_Nav' disabled={ !isNextStep } onClick={ () => dispatch(paginationUsersAction(currentIndexArr+1)) } >{ '>>' }</button>
+				<button className='btn_newDay' onClick={ () => dispatch(fetchNewUsersAction()) } >new day</button>
+				<button className='btn_addNewUser'  onClick={ onEdit }>+ Add new user</button>
 			</div>
+				<Modal active={ modalActive } setActive={ setModalActive }>
+					<legend className='modal_header'> Add new user and it Score</legend>
+					<input className='modal_nameUser' name='name' value={ user.name }  type='text' onChange={ e => onChange('name', e.target.value) } />
+					<br />
+					<input className='modal_score' name='score' value={ user.score } type='number' onChange={ e => onChange('score', e.target.value) }  />
+					<br />
+					<input onClick={ onSubmit } type="submit" value="Save"></input>
+				</Modal>
 			</div>
-			<ProfilesList sortedUsers={users} fetchUsers={fetchUsersAction}></ProfilesList>
-    </div>
-  )
+				<ProfilesList users={ users }></ProfilesList>
+		</div>
+	)
 }

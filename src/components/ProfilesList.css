@@ -1,41 +1,23 @@
-.item {
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-}
-.name {
-	text-transform: capitalize;
-}
- ol li {
-  padding: 5px;
-  margin-left: 35px;
-}
-span {
-	font-weight: bold;
-}
-ol img {
-	border: 1px solid #0a0a0a;
-	border-radius: 8px;
-}
 .modal_header {
   font-weight: bold;
-	font-size: large;
+  font-size: large;
   color: black;
   position: absolute;
   top: 6vw;
-	left: 8vw;
+  left: 8vw;
 }
 .modal_nameUser {
-	margin: 2vw;
-	border: 1px solid #0a0a0a;
-	text-transform: capitalize;
-	font-weight: bold;
-	font-size: large;
+  box-shadow: 5px 10px;
+  margin: 2vw;
+  border: 1px solid #0a0a0a;
+  text-transform: capitalize;
+  font-weight: bold;
+  font-size: large;
   color: black;
-	padding-bottom: 5%;
+  padding-bottom: 5%;
 }
 .modal_score {
-	margin-top: 0;
-	margin-bottom: 15px;
-	/* margin: 5vw; */
+  box-shadow: 3px 10px;
+  margin-top: 0;
+  margin-bottom: 15px;
 }
